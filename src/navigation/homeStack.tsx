@@ -3,6 +3,7 @@ import React from "react";
 import HomeScreen from "../screens/dashboard/homeScreen";
 import StockItemsScreen from "../screens/dashboard/home/stockItemsScreen";
 import NotificationScreen from "../screens/dashboard/home/notificationScreen";
+import NotificationDetailsScreen from "../screens/dashboard/home/NotificationDetailsScreen";
 
 const HomeStack = () => {
   const Stack = createNativeStackNavigator();
@@ -15,6 +16,10 @@ const HomeStack = () => {
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="StockItemsScreen" component={StockItemsScreen} />
       <Stack.Screen name="NotificationScreen" component={NotificationScreen} />
+      <Stack.Screen
+        name="NotificationDetailsScreen"
+        component={NotificationDetailsScreen}
+      />
     </Stack.Navigator>
   );
 };

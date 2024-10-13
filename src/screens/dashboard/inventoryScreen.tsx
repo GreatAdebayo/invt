@@ -9,6 +9,7 @@ import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
 import clsx from "clsx";
 import InventoryItems from "../../components/cards/inventoryItems";
+import SearchAndDateRange from "../../components/elements/searchAndDateRange";
 
 const InventoryScreen = () => {
   const navigation = useNavigation<any>();
@@ -28,7 +29,7 @@ const InventoryScreen = () => {
       <StatusBar style="auto" />
       <View className="h-12" />
 
-      <View className="flex-row h-12 bg-theme-border-gray px-3 space-x-4 flex items-center justify-between">
+      <View className="flex-row h-12 bg-theme-gray px-3 space-x-4 flex items-center justify-between">
         <View className="flex-row items-center space-x-2">
           <Ionicon name="filter" size={20} color={colors["theme-black"]} />
           <Text className="font-500 text-xs">Filter Warehouse</Text>
@@ -43,14 +44,8 @@ const InventoryScreen = () => {
         </View>
       </View>
 
-      <View className="flex-row items-center space-x-4 px-3 mt-2 mb-4">
-        <View className="w-2/5">
-          <SearchBox />
-        </View>
-
-        <View className="flex-1">
-          <RangeDatePicker />
-        </View>
+      <View className="px-3 mt-2 mb-4">
+        <SearchAndDateRange />
       </View>
 
       <View className="mb-4">

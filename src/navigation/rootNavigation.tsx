@@ -24,7 +24,7 @@ const RootNavigation = () => {
       <StatusBar style="auto" />
 
       <Stack.Navigator
-        initialRouteName={"DashboardScreen"}
+        initialRouteName={"LoginScreen"}
         screenOptions={{
           headerShown: false,
         }}

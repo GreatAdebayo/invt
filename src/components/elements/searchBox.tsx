@@ -15,9 +15,9 @@ const SearchBox = () => {
 
       <TextInput
         style={styles.input}
-        placeholder={"Search"}
+        placeholder={"Search for anything"}
         className={clsx(
-          "border h-10 pl-9 border-theme-b-gray pr-4 pt-0.5 rounded w-full"
+          "h-10 pl-9 pr-4 pt-0.5 rounded w-full"
         )}
         placeholderTextColor={colors["theme-text-gray"]}
       />

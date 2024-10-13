@@ -2,10 +2,9 @@ import { View, Text, FlatList } from "react-native";
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import StockItems from "../../../components/cards/stockItems";
-import SearchBox from "../../../components/elements/searchBox";
-import RangeDatePicker from "../../../components/elements/rangeDatePicker";
 import { useNavigation } from "@react-navigation/native";
 import BackButton from "../../../components/elements/backButton";
+import SearchAndDateRange from "../../../components/elements/searchAndDateRange";
 
 const StockItemsScreen = () => {
   const navigation = useNavigation();
@@ -27,14 +26,8 @@ const StockItemsScreen = () => {
         <View className="flex-1" />
       </View>
 
-      <View className="flex-row items-center space-x-4 px-3 mt-2 mb-4">
-        <View className="w-2/5">
-          <SearchBox />
-        </View>
-
-        <View className="flex-1">
-          <RangeDatePicker />
-        </View>
+      <View className="px-3 mt-2 mb-4">
+      <SearchAndDateRange/>
       </View>
 
       <FlatList

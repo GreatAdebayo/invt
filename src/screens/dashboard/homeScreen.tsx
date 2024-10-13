@@ -14,12 +14,11 @@ import UserWhite from "../../../assets/images/userWhite.png";
 import StockIcon from "../../../assets/icons/stockIcon.svg";
 import DatePicker from "../../components/elements/datePicker";
 import Button from "../../components/elements/button";
-import SearchBox from "../../components/elements/searchBox";
-import RangeDatePicker from "../../components/elements/rangeDatePicker";
 import StockItems from "../../components/cards/stockItems";
 import { Show, ShowElse, ShowWhen } from "../../components/elements/show";
 import { useNavigation } from "@react-navigation/native";
 import NotificationIcon from "../../components/elements/notificationIcon";
+import SearchAndDateRange from "../../components/elements/searchAndDateRange";
 
 const HomeScreen = () => {
   const [viewState, setViewState] = useState(true);
@@ -50,14 +49,14 @@ const HomeScreen = () => {
                 <View className="flex-row items-center justify-between">
                   <View className="flex-row items-center space-x-4">
                     <Text className="text-theme-white font-600 text-base">
-                      Open stock
+                      Available stock
                     </Text>
                     <StockIcon />
                   </View>
                   <DatePicker />
                 </View>
                 <Text className="text-2xl text-theme-white font-700">
-                  1,250
+                  12345,250
                 </Text>
                 <Text className="text-theme-white font-500">
                   1,250 Open stock{"  "}
@@ -102,7 +101,7 @@ const HomeScreen = () => {
                   <DatePicker />
                 </View>
                 <Text className="text-2xl text-theme-white font-700">
-                  5,550
+                  523489,550
                 </Text>
                 <Text className="text-theme-white font-500">
                   5,550 Issued stock{"  "}
@@ -124,7 +123,7 @@ const HomeScreen = () => {
         <View className="bg-theme-gray h-12 -top-5 py-2 px-4 rounded flex-row items-center space-x-4">
           <View className="flex-1">
             <Button
-              title="Open Stock"
+              title="Available Stock"
               size="xs"
               onPress={() => setViewState(!viewState)}
               variant={viewState ? "primary" : "transparent"}
@@ -141,15 +140,7 @@ const HomeScreen = () => {
           </View>
         </View>
 
-        <View className="flex-row items-center space-x-4">
-          <View className="w-2/5">
-            <SearchBox />
-          </View>
-
-          <View className="flex-1">
-            <RangeDatePicker />
-          </View>
-        </View>
+        <SearchAndDateRange />
       </View>
 
       <View className="mt-3 flex-1 space-y-3">

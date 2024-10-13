@@ -5,8 +5,11 @@ import { UserRemove } from "iconsax-react-native";
 import { colors } from "../../utils/constants";
 import Button from "../../components/elements/button";
 import ScreenWrapper from "../../components/elements/screenWrapper";
+import { useNavigation } from "@react-navigation/native";
 
 const LoginNoRoleScreen = () => {
+  const navigation = useNavigation<any>();
+
   return (
     <ScreenWrapper>
       <View className="space-y-12">
@@ -31,7 +34,7 @@ const LoginNoRoleScreen = () => {
         </View>
 
         <View>
-          <Button title="Refresh" />
+          <Button title="Refresh" onPress={() => navigation.navigate("LandingPageScreen")}/>
         </View>
       </View>
     </ScreenWrapper>
