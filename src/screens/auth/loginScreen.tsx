@@ -5,13 +5,10 @@ import InternalUser from "../../../assets/icons/internalUser.svg";
 import Button from "../../components/elements/button";
 import Icon from "react-native-vector-icons/Ionicons";
 import { colors } from "../../utils/constants";
-import { useNavigation } from "@react-navigation/native";
 import { ENVIRONMENT } from "@env";
 
 
-const LoginScreen = () => {
-  const navigation = useNavigation<any>();
-
+const LoginScreen = ({navigation} :{navigation:any}) => {
   return (
     <View className="flex-1 px-3 py-1">
       <View className="h-12" />
