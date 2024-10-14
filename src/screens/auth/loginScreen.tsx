@@ -6,6 +6,8 @@ import Button from "../../components/elements/button";
 import Icon from "react-native-vector-icons/Ionicons";
 import { colors } from "../../utils/constants";
 import { useNavigation } from "@react-navigation/native";
+import { ENVIRONMENT } from "@env";
+
 
 const LoginScreen = () => {
   const navigation = useNavigation<any>();
@@ -22,11 +24,11 @@ const LoginScreen = () => {
           <View className="space-y-2">
             <Text className="text-2xl font-600">
               Login{" "}
-              <Text className="text-base text-theme-text-gray">
-                (Development)
+              <Text className="text-base text-theme-text-gray capitalize">
+                ({ENVIRONMENT})
               </Text>
             </Text>
-            <Text className="font-500">Choose a login method</Text>
+            {/* <Text className="font-500">Choose a login method</Text> */}
           </View>
 
           <View className="flex-row justify-around items-center">

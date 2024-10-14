@@ -8,11 +8,10 @@ import { styles } from "../../utils/globalStyle";
 
 const SearchBox = () => {
   return (
-    <View className="self-start flex-row items-center">
+    <View className="self-start flex-row items-center bg-white">
       <View className="absolute left-3 text-gray-400">
         <SearchNormal1 size="18" color={colors["theme-text-gray"]} />
       </View>
-
       <TextInput
         style={styles.input}
         placeholder={"Search for anything"}
