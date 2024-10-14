@@ -24,7 +24,7 @@ const LoginScreen = () => {
           <View className="space-y-2">
             <Text className="text-2xl font-600">
               Login{" "}
-              <Text className="text-base text-theme-text-gray capitalize">
+              <Text className="text-base text-theme-text-gray uppercase">
                 ({ENVIRONMENT})
               </Text>
             </Text>
