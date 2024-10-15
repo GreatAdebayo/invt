@@ -22,7 +22,6 @@ const RootNavigation = () => {
   return (
     <NavigationContainer theme={MyTheme}>
       <StatusBar style="auto" />
-
       <Stack.Navigator
         initialRouteName={"LoginScreen"}
         screenOptions={{
@@ -30,7 +29,7 @@ const RootNavigation = () => {
         }}
       >
         <Stack.Screen
-          name="LoginScreen"
+          name="login"
           component={LoginScreen}
           options={{ animation: "fade_from_bottom" }}
         />

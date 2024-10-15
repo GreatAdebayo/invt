@@ -1,5 +1,3 @@
-interface User {
-  id?: string;
-  token?: string;
-  email?: string;
+interface VerifyToken {
+  token: string | null;
 }

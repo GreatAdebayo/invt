@@ -1,7 +1,6 @@
 import RootNavigation from "./src/navigation/rootNavigation";
-import LoginNoRoleScreen from "./src/screens/auth/loginNoRoleScreen";
-import LoginScreen from "./src/screens/auth/loginScreen";
 import { useFonts } from "expo-font";
+import { GlobalProvider } from "./src/redux/provider";
 
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
@@ -22,8 +21,8 @@ export default function App() {
   }
 
   return (
-    <>
+    <GlobalProvider>
       <RootNavigation />
-    </>
+    </GlobalProvider>
   );
 }
