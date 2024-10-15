@@ -1,34 +1,46 @@
 {
-  "expo": {
-    "name": "abi-inventory",
-    "slug": "inventory-app",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#000000"
-    },
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#000000"
+  "cli": {
+    "version": ">= 10.2.2"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
       },
-      "package": "com.greatestman.abiinventory"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "80d9a29e-ebec-410b-b02f-d7bde3ce9f98"
+      "runtimeVersion": {
+        "policy": "appVersion"
       }
     },
-    "owner": "beertech"
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "runtimeVersion": {
+        "policy": "appVersion"
+      }
+    },
+    "staging": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "runtimeVersion": {
+        "policy": "appVersion"
+      }
+    },
+    "production": {
+      "android": {
+        "buildType": "apk"
+      },
+      "runtimeVersion": {
+        "policy": "appVersion"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
   }
 }

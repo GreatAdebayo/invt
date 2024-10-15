@@ -1,0 +1,1 @@
+type StatusBarColor = 'auto' | 'inverted' | 'light' | 'dark';
