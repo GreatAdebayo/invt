@@ -1,14 +1,74 @@
 import { View, Text, ScrollView } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "../../../assets/images/logo.svg";
 import InternalUser from "../../../assets/icons/internalUser.svg";
 import Button from "../../components/elements/button";
 import Icon from "react-native-vector-icons/Ionicons";
 import { colors } from "../../utils/constants";
-import { ENVIRONMENT } from "@env";
+import { ENVIRONMENT, CLIENT_ID, TENANT_ID } from "@env";
+import * as WebBrowser from "expo-web-browser";
+import { useAutoDiscovery } from "expo-auth-session";
+import {
+  checkUserRoleAndNavigate,
+  createAuthRequest,
+  createDiscoveryUrl,
+  createRedirectUri,
+  getAccessToken,
+  handleSSOLogin,
+  handleVerifyTokenAndLogin,
+} from "./loginFunctions";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
 
+WebBrowser.maybeCompleteAuthSession();
 
-const LoginScreen = ({navigation} :{navigation:any}) => {
+const LoginScreen = ({ navigation }: { navigation: any }) => {
+  const dispatch = useAppDispatch();
+  const clientId = CLIENT_ID;
+  const tenantId = TENANT_ID;
+  const { isAuthenticated, user, isAuthenticating } = useAppSelector(
+    (state) => state.auth
+  );
+
+  // SSO Url
+  const discovery = useAutoDiscovery(createDiscoveryUrl(tenantId));
+
+  // Redirect Uri
+  const redirectUri = createRedirectUri("inventoryapp", "login");
+
+  // Request
+  const [request, response, promptAsync] = createAuthRequest(
+    clientId,
+    redirectUri,
+    discovery
+  );
+
+  // SSO TOKEN FROM AZURE
+  useEffect(() => {
+    const handleAuthResponse = async () => {
+      if (response?.type === "success" && request) {
+        // Add a null check for request
+        const { code } = response.params;
+        const token = await getAccessToken(
+          clientId,
+          code,
+          request.codeVerifier,
+          redirectUri,
+          discovery
+        );
+        // decode token
+        handleVerifyTokenAndLogin({ token }, dispatch);
+      }
+    };
+
+    handleAuthResponse();
+  }, [response]);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      checkUserRoleAndNavigate(user, navigation);
+    }
+  }, [isAuthenticated]);
+
   return (
     <View className="flex-1 px-3 py-1">
       <View className="h-12" />
@@ -47,7 +107,14 @@ const LoginScreen = ({navigation} :{navigation:any}) => {
           </View>
 
           <View>
-            <Button onPress={() => navigation.navigate("LoginNoRoleScreen")} title={"Continue"} />
+            <Button
+              onPress={() => {
+                handleSSOLogin(promptAsync);
+              }}
+              title={"Continue"}
+              isLoading={isAuthenticating}
+              disabled={isAuthenticating}
+            />
           </View>
         </View>
       </ScrollView>

@@ -18,3 +18,5 @@ export const colors = {
   "theme-border-gray": "#E6E6E6",
   "theme-light-gray": "#F4F3F6",
 };
+
+export const ERROR_OCCURED_MESSAGE: string = "An unknown error occurred";
