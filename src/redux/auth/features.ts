@@ -8,8 +8,10 @@ export const verifyTokenAndlogin = createAsyncThunk(
   async ({ token }: VerifyToken) => {
     try {
       const response = await api.post("auth/signin", { token });
-      console.log(response.data);
+      const { data } = response.data;
+      return data;
     } catch (error: any) {
+      console.log(error);
       handleAxiosError(error);
     }
   }

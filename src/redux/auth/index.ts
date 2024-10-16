@@ -4,33 +4,19 @@ import { verifyTokenAndlogin } from "./features";
 interface AuthSliceState {
   isAuthenticated: boolean;
   isAuthenticating: boolean;
-  token: string;
+  user: User;
 }
 
 const initialState: AuthSliceState = {
   isAuthenticated: false,
   isAuthenticating: false,
-  token: "",
+  user: {},
 };
 
 export const AuthSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {
-    // setIsGettingTokenFromGoogleCallback: (
-    //   state: AuthSliceState,
-    //   action: PayloadAction<boolean>
-    // ) => {
-    //   state.isGettingTokenFromGoogleCallback = action.payload;
-    // },
-    // getTokenFromGoogleFulfiled: (
-    //   state: AuthSliceState,
-    //   action: PayloadAction<string>
-    // ) => {
-    //   state.token = action.payload;
-    //   state.isAuthenticated = true;
-    // },
-  },
+  reducers: {},
 
   // redux http auto reducers
   extraReducers: (builder) => {
@@ -42,21 +28,17 @@ export const AuthSlice = createSlice({
         verifyTokenAndlogin.fulfilled,
         (state: AuthSliceState, action: PayloadAction<any>) => {
           state.isAuthenticated = true;
-          // state.token = action.payload.token;
-          // state.isAuthenticating = false;
+          state.user = action.payload;
         }
       )
       .addCase(verifyTokenAndlogin.rejected, (state: AuthSliceState) => {
         state.isAuthenticated = false;
         state.isAuthenticating = false;
-        state.token = "";
+        state.user = {};
       });
   },
 });
 
 export default AuthSlice.reducer;
 
-export const {
-  // setIsGettingTokenFromGoogleCallback,
-  // getTokenFromGoogleFulfiled,
-} = AuthSlice.actions;
+export const {} = AuthSlice.actions;

@@ -5,10 +5,11 @@ import StockController from "../../../assets/images/stock-controller.svg";
 import TradeMarketingManager from "../../../assets/images/tmm-manager.svg";
 import Logo from "../../../assets/images/logo.svg";
 import BackButton from "../../components/elements/backButton";
-import { useNavigation } from "@react-navigation/native";
+import { useAppSelector } from "../../redux/store";
+import { checkUserRoleAndNavigate } from "./loginFunctions";
 
-const LandingPageScreen = () => {
-  const navigation = useNavigation<any>();
+const LandingPageScreen = ({ navigation }: { navigation: any }) => {
+  const { user } = useAppSelector((state) => state.auth);
 
   return (
     <View className="flex-1 px-3 py-1">
@@ -21,23 +22,38 @@ const LandingPageScreen = () => {
           </View>
 
           <View className="space-y-2">
-            <Text className="text-2xl font-700">Welcome Jane 👋</Text>
+            <Text className="text-2xl font-700">
+              Welcome {user.fullName} 👋
+            </Text>
             <Text className="text-lg font-600">Select a module</Text>
           </View>
 
           <View className="flex-row items-center justify-around space-x-4">
-            <Pressable onPress={() => navigation.navigate("DashboardScreen")}>
+            <Pressable
+              onPress={() => {
+                checkUserRoleAndNavigate(user, navigation);
+              }}
+            >
               <TradeMarketingAdmin />
             </Pressable>
 
-            <View>
+            <Pressable
+              onPress={() => {
+                checkUserRoleAndNavigate(user, navigation);
+              }}
+            >
               <StockController />
-            </View>
+            </Pressable>
           </View>
 
-          <View className="w-full items-center">
+          <Pressable
+            className="w-full items-center"
+            onPress={() => {
+              checkUserRoleAndNavigate(user, navigation);
+            }}
+          >
             <TradeMarketingManager />
-          </View>
+          </Pressable>
         </View>
       </ScrollView>
     </View>

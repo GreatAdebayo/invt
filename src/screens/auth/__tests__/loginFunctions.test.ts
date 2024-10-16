@@ -3,7 +3,7 @@ import {
   createRedirectUri,
   getAccessToken,
   handleSSOLogin,
-} from "../ssoFunctions";
+} from "../loginFunctions";
 import { exchangeCodeAsync } from "expo-auth-session";
 
 // Mock dependencies
@@ -40,8 +40,6 @@ describe("SSO Functions", () => {
     await handleSSOLogin(promptAsync);
     expect(promptAsync).toHaveBeenCalled();
   });
-
-  // Test cases for getAccessToken
 });
 
 describe("getAccessToken", () => {

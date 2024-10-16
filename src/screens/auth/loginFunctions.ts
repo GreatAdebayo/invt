@@ -66,10 +66,7 @@ export const handleVerifyTokenAndLogin = async (
   dispatch: ReturnType<typeof useAppDispatch>
 ) => {
   const actionResult = await dispatch(verifyTokenAndlogin(payload));
-  if (verifyTokenAndlogin.fulfilled.match(actionResult)) {
-    console.log("halleluyah");
-    // router.push(`/email-verify?email=${encodeURIComponent(email)}`);
-  } else if (verifyTokenAndlogin.rejected.match(actionResult)) {
+  if (verifyTokenAndlogin.rejected.match(actionResult)) {
     if (actionResult.error) {
       const errorMessage = actionResult.error?.message || ERROR_OCCURED_MESSAGE;
       alert(errorMessage);
@@ -80,5 +77,13 @@ export const handleVerifyTokenAndLogin = async (
       //     })
       //   );
     }
+  }
+};
+
+export const checkUserRoleAndNavigate = (user: User, navigation: any) => {
+  if (user.role === null) {
+    navigation.navigate("no_role");
+  } else {
+    navigation.navigate("dashboard");
   }
 };

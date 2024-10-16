@@ -9,14 +9,15 @@ import { ENVIRONMENT, CLIENT_ID, TENANT_ID } from "@env";
 import * as WebBrowser from "expo-web-browser";
 import { useAutoDiscovery } from "expo-auth-session";
 import {
+  checkUserRoleAndNavigate,
   createAuthRequest,
   createDiscoveryUrl,
   createRedirectUri,
   getAccessToken,
   handleSSOLogin,
   handleVerifyTokenAndLogin,
-} from "./ssoFunctions";
-import { useAppDispatch } from "../../redux/store";
+} from "./loginFunctions";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -24,12 +25,14 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
   const dispatch = useAppDispatch();
   const clientId = CLIENT_ID;
   const tenantId = TENANT_ID;
+  const { isAuthenticated, user, isAuthenticating } = useAppSelector(
+    (state) => state.auth
+  );
 
   // SSO Url
   const discovery = useAutoDiscovery(createDiscoveryUrl(tenantId));
 
   // Redirect Uri
-
   const redirectUri = createRedirectUri("inventoryapp", "login");
 
   // Request
@@ -39,8 +42,8 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
     discovery
   );
 
+  // SSO TOKEN FROM AZURE
   useEffect(() => {
-    // SSO TOKEN FROM AZURE
     const handleAuthResponse = async () => {
       if (response?.type === "success" && request) {
         // Add a null check for request
@@ -59,6 +62,12 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
 
     handleAuthResponse();
   }, [response]);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      checkUserRoleAndNavigate(user, navigation);
+    }
+  }, [isAuthenticated]);
 
   return (
     <View className="flex-1 px-3 py-1">
@@ -103,6 +112,8 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
                 handleSSOLogin(promptAsync);
               }}
               title={"Continue"}
+              isLoading={isAuthenticating}
+              disabled={isAuthenticating}
             />
           </View>
         </View>

@@ -23,7 +23,7 @@ const RootNavigation = () => {
     <NavigationContainer theme={MyTheme}>
       <StatusBar style="auto" />
       <Stack.Navigator
-        initialRouteName={"LoginScreen"}
+        initialRouteName={"login"}
         screenOptions={{
           headerShown: false,
         }}
@@ -34,16 +34,16 @@ const RootNavigation = () => {
           options={{ animation: "fade_from_bottom" }}
         />
         <Stack.Screen
-          name="LandingPageScreen"
+          name="landing"
           component={LandingPageScreen}
           options={{ animation: "slide_from_right" }}
         />
         <Stack.Screen
-          name="LoginNoRoleScreen"
+          name="no_role"
           component={LoginNoRoleScreen}
           options={{ animation: "fade_from_bottom" }}
         />
-        <Stack.Screen name="DashboardScreen" component={BottomNavigator} />
+        <Stack.Screen name="dashboard" component={BottomNavigator} />
       </Stack.Navigator>
     </NavigationContainer>
   );
