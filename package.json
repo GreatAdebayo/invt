@@ -4,16 +4,10 @@
   "main": "expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
-<<<<<<< HEAD
-    "android": "expo run:android",
-    "ios": "expo run:ios",
-    "web": "expo start --web"
-=======
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest"
->>>>>>> a204fbe1fcf4f3f44b1abf96be4219bd6904de02
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.6.1",
@@ -23,13 +17,9 @@
     "@types/jest": "^29.5.13",
     "axios": "^1.7.7",
     "clsx": "^2.1.1",
-<<<<<<< HEAD
-    "expo": "^51.0.38",
-=======
     "expo": "~51.0.38",
     "expo-auth-session": "~5.5.2",
     "expo-crypto": "~13.0.2",
->>>>>>> a204fbe1fcf4f3f44b1abf96be4219bd6904de02
     "expo-secure-store": "^13.0.2",
     "expo-status-bar": "~1.12.1",
     "expo-web-browser": "~13.0.3",
