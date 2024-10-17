@@ -18,10 +18,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#000000"
-      }
+      },
+      "package": "com.portablog.abiinventory"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "bcd78c95-1ae2-43f1-b9ec-6b7d713eb620"
+      }
     }
   }
 }

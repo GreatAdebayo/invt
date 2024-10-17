@@ -3,7 +3,7 @@ import React from "react";
 import clsx from "clsx";
 
 interface Props {
-  variant?: "primary" | "transparent";
+  variant?: "primary" | "transparent" | "danger" | "outline";
   size?: "md" | "sm" | "xs";
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
@@ -32,11 +32,15 @@ const Button = ({
   const variants = {
     primary: "bg-theme-blue",
     transparent: "bg-transparent",
+    danger: "bg-btn-red",
+    outline: "border border-theme-b-gray",
   };
 
   const textVariant = {
     primary: "text-white",
     transparent: "text-theme-text-gray",
+    danger: "text-theme-white",
+    outline: "text-theme-black",
   };
 
   const sizes = {
