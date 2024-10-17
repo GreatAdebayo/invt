@@ -1,7 +1,6 @@
 import { ActivityIndicator } from "react-native";
 import RootNavigation from "./src/navigation/rootNavigation";
 import { useFonts } from "expo-font";
-import LoginNoRoleScreen from "./src/screens/auth/loginNoRoleScreen";
 
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
@@ -17,14 +16,13 @@ export default function App() {
     h_950: require("./assets/fonts/Gilroy-Heavy.ttf"),
   });
 
-  // if (!fontsLoaded && !fontError) {
-  //   return <ActivityIndicator />;
-  // }
+  if (!fontsLoaded && !fontError) {
+    return <ActivityIndicator />;
+  }
 
   return (
     <>
       <RootNavigation />
-      {/* <LoginNoRoleScreen /> */}
     </>
   );
 }

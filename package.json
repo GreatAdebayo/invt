@@ -14,7 +14,7 @@
     "@react-navigation/native-stack": "^6.11.0",
     "@reduxjs/toolkit": "^2.2.7",
     "clsx": "^2.1.1",
-    "expo": "^51.0.37",
+    "expo": "^51.0.38",
     "expo-secure-store": "^13.0.2",
     "expo-status-bar": "~1.12.1",
     "iconsax-react-native": "^0.0.8",
