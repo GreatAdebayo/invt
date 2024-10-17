@@ -9,7 +9,6 @@ import {
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import Logo from "../../../assets/icons/logoIcon.svg";
-import UserTheme from "../../../assets/images/userTheme.png";
 import UserWhite from "../../../assets/images/userWhite.png";
 import StockIcon from "../../../assets/icons/stockIcon.svg";
 import DatePicker from "../../components/elements/datePicker";
@@ -19,10 +18,12 @@ import { Show, ShowElse, ShowWhen } from "../../components/elements/show";
 import { useNavigation } from "@react-navigation/native";
 import NotificationIcon from "../../components/elements/notificationIcon";
 import SearchAndDateRange from "../../components/elements/searchAndDateRange";
+import { useAppSelector } from "../../redux/store";
 
 const HomeScreen = () => {
   const [viewState, setViewState] = useState(true);
   const navigation = useNavigation<any>();
+  const { user } = useAppSelector((state) => state.auth);
 
   return (
     <View className="flex-1">
@@ -41,10 +42,12 @@ const HomeScreen = () => {
                 <Logo />
                 <View className="flex-row items-center space-x-4">
                   <NotificationIcon />
-                  <Image source={UserTheme} className="h-9 w-9" />
+                  <Image
+                    source={{ uri: user.photoUrl }}
+                    className="h-9 w-9 rounded-full"
+                  />
                 </View>
               </View>
-
               <View className="space-y-5">
                 <View className="flex-row items-center justify-between">
                   <View className="flex-row items-center space-x-4">
@@ -152,7 +155,6 @@ const HomeScreen = () => {
             </Text>
           </Pressable>
         </View>
-
         <FlatList
           className="px-3 flex-1"
           showsVerticalScrollIndicator={false}

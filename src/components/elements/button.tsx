@@ -61,19 +61,20 @@ const Button = ({
           classNames
         )}
       >
-        {isLoading && <ActivityIndicator color={loaderColor} size={24} />}
-        {!isLoading && startIcon}
-        <Text
-          className={clsx(
-            "font-600",
-            (startIcon || endIcon) && "mt-0.5",
-            textVariant[variant],
-            textClassName
-          )}
-        >
-          {title}
-        </Text>
-        {endIcon}
+        {isLoading ? (
+          <ActivityIndicator color={loaderColor} size={24} />
+        ) : (
+          <Text
+            className={clsx(
+              "font-600",
+              (startIcon || endIcon) && "mt-0.5",
+              textVariant[variant],
+              textClassName
+            )}
+          >
+            {title}
+          </Text>
+        )}
       </TouchableOpacity>
     </View>
   );
