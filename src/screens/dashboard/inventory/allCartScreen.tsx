@@ -8,7 +8,7 @@ import Button from "../../../components/elements/button";
 import CartItems from "../../../components/cards/cartItems";
 import DeleteModal from "../../../components/modals/deleteModal";
 import CustomModal from "../../../components/modals/customModal";
-import RequestSubmittedModal from "../../../components/modals/requestSubmittedModal";
+import RequestSubmittedModal from "../../../components/modals/alertModal";
 import Ionicon from "../../../components/Icon/ionicon";
 import { colors } from "../../../utils/constants";
 
@@ -87,7 +87,7 @@ const AllCartScreen = () => {
         />
       </CustomModal>
 
-      <CustomModal
+      {/* <CustomModal
         isVisible={isModalVisible.send}
         onBackdropPress={() =>
           setModalVisible({ ...isModalVisible, send: false })
@@ -106,7 +106,7 @@ const AllCartScreen = () => {
             setModalVisible({ ...isModalVisible, send: false })
           }
         />
-      </CustomModal>
+      </CustomModal> */}
     </View>
   );
 };

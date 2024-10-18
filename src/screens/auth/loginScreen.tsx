@@ -19,6 +19,7 @@ import {
 } from "./loginFunctions";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { saveAzureIdToken } from "../../redux/auth";
+import AlertModal from "../../components/modals/alertModal";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -88,7 +89,6 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
                 ({ENVIRONMENT})
               </Text>
             </Text>
-            {/* <Text className="font-500">Choose a login method</Text> */}
           </View>
 
           <View className="flex-row justify-around items-center">
@@ -112,8 +112,8 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
           <View>
             <Button
               onPress={() => {
-                // handleSSOLogin(promptAsync);
-                navigation.navigate("dashboard");
+                handleSSOLogin(promptAsync);
+                // navigation.navigate("dashboard");
               }}
               title={"Continue"}
               isLoading={isAuthenticating}

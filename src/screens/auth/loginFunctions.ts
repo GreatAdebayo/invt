@@ -6,6 +6,7 @@ import {
 import { useAppDispatch } from "../../redux/store";
 import { verifyTokenAndlogin } from "../../redux/auth/features";
 import { ERROR_OCCURED_MESSAGE } from "../../utils/constants";
+import { addAlert } from "../../redux/alert";
 
 // SSO Service
 export const createDiscoveryUrl = (tenantId: string): string => {
@@ -69,13 +70,12 @@ export const handleVerifyTokenAndLogin = async (
   if (verifyTokenAndlogin.rejected.match(actionResult)) {
     if (actionResult.error) {
       const errorMessage = actionResult.error?.message || ERROR_OCCURED_MESSAGE;
-      alert(errorMessage);
-      //   dispatch(
-      //     addAlert({
-      //       message: errorMessage,
-      //       type: "error",
-      //     })
-      //   );
+      dispatch(
+        addAlert({
+          message: errorMessage,
+          type: "error",
+        })
+      );
     }
   }
 };

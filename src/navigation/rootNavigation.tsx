@@ -6,7 +6,8 @@ import BottomNavigator from "./bottomNavigation";
 import LoginScreen from "../screens/auth/loginScreen";
 import LoginNoRoleScreen from "../screens/auth/loginNoRoleScreen";
 import LandingPageScreen from "../screens/auth/landingPageScreen";
-import { colors } from "../utils/constants";
+import AlertModal from "../components/modals/alertModal";
+import { View } from "react-native";
 
 const Stack = createNativeStackNavigator();
 
@@ -45,6 +46,9 @@ const RootNavigation = () => {
         />
         <Stack.Screen name="dashboard" component={BottomNavigator} />
       </Stack.Navigator>
+      <View className="mx-3">
+        <AlertModal />
+      </View>
     </NavigationContainer>
   );
 };
