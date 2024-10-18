@@ -8,35 +8,23 @@
       "distribution": "internal",
       "android": {
         "buildType": "apk"
-      },
-      "runtimeVersion": {
-        "policy": "appVersion"
       }
     },
     "preview": {
       "distribution": "internal",
       "android": {
         "buildType": "apk"
-      },
-      "runtimeVersion": {
-        "policy": "appVersion"
       }
     },
     "staging": {
       "distribution": "internal",
       "android": {
         "buildType": "apk"
-      },
-      "runtimeVersion": {
-        "policy": "appVersion"
       }
     },
     "production": {
       "android": {
         "buildType": "apk"
-      },
-      "runtimeVersion": {
-        "policy": "appVersion"
       }
     }
   },

@@ -1,14 +1,26 @@
 import { View, Text } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "../../../assets/images/logo.svg";
 import { UserRemove } from "iconsax-react-native";
 import { colors } from "../../utils/constants";
 import Button from "../../components/elements/button";
 import ScreenWrapper from "../../components/elements/screenWrapper";
-import { useNavigation } from "@react-navigation/native";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
+import {
+  checkUserRoleAndNavigate,
+  handleVerifyTokenAndLogin,
+} from "./loginFunctions";
 
-const LoginNoRoleScreen = () => {
-  const navigation = useNavigation<any>();
+const LoginNoRoleScreen = ({ navigation }: { navigation: any }) => {
+  const dispatch = useAppDispatch();
+  const { azureIdToken, isAuthenticating, isAuthenticated, user } =
+    useAppSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      checkUserRoleAndNavigate(user, navigation);
+    }
+  }, [isAuthenticated]);
 
   return (
     <ScreenWrapper>
@@ -34,7 +46,13 @@ const LoginNoRoleScreen = () => {
         </View>
 
         <View>
-          <Button title="Refresh" onPress={() => navigation.navigate("LandingPageScreen")}/>
+          <Button
+            title="Refresh"
+            onPress={() => {
+              handleVerifyTokenAndLogin({ token: azureIdToken }, dispatch);
+            }}
+            isLoading={isAuthenticating}
+          />
         </View>
       </View>
     </ScreenWrapper>

@@ -11,7 +11,6 @@ export const verifyTokenAndlogin = createAsyncThunk(
       const { data } = response.data;
       return data;
     } catch (error: any) {
-      console.log(error);
       handleAxiosError(error);
     }
   }

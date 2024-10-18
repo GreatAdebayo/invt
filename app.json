@@ -3,6 +3,9 @@
     "name": "abi-inventory",
     "slug": "inventory-app",
     "version": "1.0.0",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
     "orientation": "portrait",
     "jsEngine": "hermes",
     "icon": "./assets/icon.png",
@@ -31,6 +34,19 @@
       }
     },
     "scheme": "inventoryapp",
-    "owner": "beertech"
+    "owner": "beertech",
+    "plugins": [
+      [
+        "@sentry/react-native/expo",
+        {
+          "organization": "beertech-africa",
+          "project": "inventory-app",
+          "url": "https://sentry.io/"
+        }
+      ]
+    ],
+    "updates": {
+      "url": "https://u.expo.dev/80d9a29e-ebec-410b-b02f-d7bde3ce9f98"
+    }
   }
 }

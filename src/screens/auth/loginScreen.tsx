@@ -18,6 +18,7 @@ import {
   handleVerifyTokenAndLogin,
 } from "./loginFunctions";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { saveAzureIdToken } from "../../redux/auth";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -55,6 +56,8 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
           redirectUri,
           discovery
         );
+        // save token in state
+        dispatch(saveAzureIdToken(token));
         // decode token
         handleVerifyTokenAndLogin({ token }, dispatch);
       }

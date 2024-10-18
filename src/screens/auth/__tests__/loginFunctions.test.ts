@@ -1,4 +1,5 @@
 import {
+  checkUserRoleAndNavigate,
   createDiscoveryUrl,
   createRedirectUri,
   getAccessToken,
@@ -96,5 +97,31 @@ describe("getAccessToken", () => {
     await expect(
       getAccessToken(clientId, code, codeVerifier, redirectUri, discovery)
     ).rejects.toThrow("Failed to exchange code");
+  });
+});
+
+describe("checkUserRoleAndNavigate", () => {
+  const navigation = {
+    navigate: jest.fn(),
+  };
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it("should navigate to 'no_role' screen if user role is null", () => {
+    const user = { role: null }; // User with null role
+
+    checkUserRoleAndNavigate(user, navigation);
+
+    expect(navigation.navigate).toHaveBeenCalledWith("no_role");
+  });
+
+  it("should navigate to 'dashboard' screen if user has a role", () => {
+    const user = { role: "MANAGER" }; // User with a role
+
+    checkUserRoleAndNavigate(user, navigation);
+
+    expect(navigation.navigate).toHaveBeenCalledWith("dashboard");
   });
 });

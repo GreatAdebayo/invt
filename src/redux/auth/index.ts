@@ -5,18 +5,27 @@ interface AuthSliceState {
   isAuthenticated: boolean;
   isAuthenticating: boolean;
   user: User;
+  azureIdToken: string | null;
 }
 
 const initialState: AuthSliceState = {
   isAuthenticated: false,
   isAuthenticating: false,
   user: {},
+  azureIdToken: "",
 };
 
 export const AuthSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    saveAzureIdToken: (
+      state: AuthSliceState,
+      action: PayloadAction<string | null>
+    ) => {
+      state.azureIdToken = action.payload;
+    },
+  },
 
   // redux http auto reducers
   extraReducers: (builder) => {
@@ -28,6 +37,7 @@ export const AuthSlice = createSlice({
         verifyTokenAndlogin.fulfilled,
         (state: AuthSliceState, action: PayloadAction<any>) => {
           state.isAuthenticated = true;
+          state.isAuthenticating = false;
           state.user = action.payload;
         }
       )
@@ -41,4 +51,4 @@ export const AuthSlice = createSlice({
 
 export default AuthSlice.reducer;
 
-export const {} = AuthSlice.actions;
+export const { saveAzureIdToken } = AuthSlice.actions;

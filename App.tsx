@@ -1,8 +1,15 @@
 import RootNavigation from "./src/navigation/rootNavigation";
 import { useFonts } from "expo-font";
 import { GlobalProvider } from "./src/redux/provider";
+import * as Sentry from "@sentry/react-native";
+import { DSN } from "@env";
 
-export default function App() {
+function App() {
+  Sentry.init({
+    dsn: DSN,
+    debug: true,
+  });
+
   const [fontsLoaded, fontError] = useFonts({
     t_100: require("./assets/fonts/Gilroy-Thin.ttf"),
     e_200: require("./assets/fonts/Gilroy-UltraLight.ttf"),
@@ -26,3 +33,6 @@ export default function App() {
     </GlobalProvider>
   );
 }
+
+// Wrap the App with Sentry
+export default Sentry.wrap(App);
