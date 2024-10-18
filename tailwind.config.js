@@ -35,6 +35,7 @@ module.exports = {
         "theme-gray": "#E6E6E6",
         "theme-text-gray": "#686868",
         "theme-b-gray": "#C7C7C7",
+        "btn-red": "#EB5757",
       },
     },
   },

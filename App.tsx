@@ -1,3 +1,4 @@
+import { ActivityIndicator } from "react-native";
 import RootNavigation from "./src/navigation/rootNavigation";
 import { useFonts } from "expo-font";
 import { GlobalProvider } from "./src/redux/provider";
@@ -24,7 +25,7 @@ function App() {
   });
 
   if (!fontsLoaded && !fontError) {
-    return null;
+    return <ActivityIndicator />;
   }
 
   return (

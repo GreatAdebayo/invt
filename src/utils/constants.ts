@@ -13,9 +13,10 @@ export const colors = {
   "theme-yellow": "#FFAB00",
   "theme-light-yellow": "#FFEECC",
   "theme-brown": "#3f1f14",
-  "theme-gray": "#F2F2F2",
+  "theme-gray": "#E6E6E6",
   "theme-text-gray": "#686868",
-  "theme-border-gray": "#E6E6E6",
+  "theme-b-gray": "#C7C7C7",
+  "btn-red": "#EB5757",
   "theme-light-gray": "#F4F3F6",
 };
 

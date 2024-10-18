@@ -36,7 +36,7 @@ const InventoryScreen = () => {
         </View>
 
         <View>
-          <Pressable onPress={() => navigation.navigate("StockItemsScreen")}>
+          <Pressable onPress={() => navigation.navigate("RequestNewItemScreen")}>
             <Text className="underline text-sm font-500 text-link-blue">
               Request New Item
             </Text>
