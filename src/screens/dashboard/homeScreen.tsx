@@ -155,6 +155,7 @@ const HomeScreen = () => {
             </Text>
           </Pressable>
         </View>
+        
         <FlatList
           className="px-3 flex-1"
           showsVerticalScrollIndicator={false}

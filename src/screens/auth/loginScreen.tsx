@@ -83,7 +83,7 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
 
           <View className="space-y-2">
             <Text className="text-2xl font-600">
-              Login{" "}
+              Login
               <Text className="text-base text-theme-text-gray uppercase">
                 ({ENVIRONMENT})
               </Text>
@@ -112,7 +112,8 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
           <View>
             <Button
               onPress={() => {
-                handleSSOLogin(promptAsync);
+                // handleSSOLogin(promptAsync);
+                navigation.navigate("dashboard");
               }}
               title={"Continue"}
               isLoading={isAuthenticating}

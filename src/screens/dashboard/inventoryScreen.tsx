@@ -1,8 +1,6 @@
 import { View, Text, Pressable, ScrollView, FlatList } from "react-native";
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import SearchBox from "../../components/elements/searchBox";
-import RangeDatePicker from "../../components/elements/rangeDatePicker";
 import Ionicon from "../../components/Icon/ionicon";
 import { colors } from "../../utils/constants";
 import { useNavigation } from "@react-navigation/native";

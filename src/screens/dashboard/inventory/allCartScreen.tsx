@@ -6,16 +6,17 @@ import { useNavigation } from "@react-navigation/native";
 import SearchAndDateRange from "../../../components/elements/searchAndDateRange";
 import Button from "../../../components/elements/button";
 import CartItems from "../../../components/cards/cartItems";
-import Modal from "react-native-modal";
 import DeleteModal from "../../../components/modals/deleteModal";
+import CustomModal from "../../../components/modals/customModal";
+import RequestSubmittedModal from "../../../components/modals/requestSubmittedModal";
+import Ionicon from "../../../components/Icon/ionicon";
+import { colors } from "../../../utils/constants";
 
 const AllCartScreen = () => {
   const navigation = useNavigation<any>();
   const [isModalVisible, setModalVisible] = useState({
     delete: false,
     send: false,
-    sendAll: false,
-    deleteAll: false,
   });
 
   return (
@@ -41,24 +42,11 @@ const AllCartScreen = () => {
 
       <View className="flex-row items-center justify-between space-x-7 px-3 mb-3">
         <View className="flex-1">
-          <Button
-            onPress={() =>
-              setModalVisible({ ...isModalVisible, deleteAll: true })
-            }
-            variant="danger"
-            title="Delete All Request"
-            size="sm"
-          />
+          <Button variant="danger" title="Delete All Request" size="sm" />
         </View>
 
         <View className="flex-1">
-          <Button
-            onPress={() =>
-              setModalVisible({ ...isModalVisible, sendAll: true })
-            }
-            title="Send All Request"
-            size="sm"
-          />
+          <Button title="Send All Request" size="sm" />
         </View>
       </View>
 
@@ -80,18 +68,12 @@ const AllCartScreen = () => {
         )}
       />
 
-
-
       {/* MODALS */}
-      <Modal
+      <CustomModal
         isVisible={isModalVisible.delete}
-        animationIn="zoomInUp"
         onBackdropPress={() =>
           setModalVisible({ ...isModalVisible, delete: false })
         }
-        style={{ marginHorizontal: 10, bottom: 0, marginVertical: 0 }}
-        backdropTransitionOutTiming={0}
-        hideModalContentWhileAnimating={true}
       >
         <DeleteModal
           title="Delete Request Confirmation"
@@ -103,7 +85,28 @@ const AllCartScreen = () => {
             setModalVisible({ ...isModalVisible, delete: false });
           }}
         />
-      </Modal>
+      </CustomModal>
+
+      <CustomModal
+        isVisible={isModalVisible.send}
+        onBackdropPress={() =>
+          setModalVisible({ ...isModalVisible, send: false })
+        }
+      >
+        <RequestSubmittedModal
+          title="Request Submitted Successfully. Thank You"
+          icon={
+            <Ionicon
+              name="checkmark-circle"
+              size={80}
+              color={colors["theme-green"]}
+            />
+          }
+          handleOnDone={() =>
+            setModalVisible({ ...isModalVisible, send: false })
+          }
+        />
+      </CustomModal>
     </View>
   );
 };
