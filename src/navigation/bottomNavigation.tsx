@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet, Platform } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import InventoryScreen from "../screens/dashboard/inventoryScreen";
 import RequestScreen from "../screens/dashboard/requestScreen";
 import ReportScreen from "../screens/dashboard/reportScreen";
 
